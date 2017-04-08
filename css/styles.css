@@ -23,16 +23,6 @@ h1 {
 	margin:20px 20px;
 }
 
-
-
-.navbar-inverse {
-  background-color: #62A9FF;
-  border-color: #62A9FF;
-  color: black;
-}
-
-
-
 div.gallery {
     margin: 5px;
     border: 1px solid #ccc;
@@ -139,7 +129,7 @@ div.gallery img {
  .social {
      -webkit-transform: scale(0.8);
      /* Browser Variations: */
-     
+
      -moz-transform: scale(0.8);
      -o-transform: scale(0.8);
      -webkit-transition-duration: 0.5s;
@@ -150,7 +140,7 @@ div.gallery img {
 /*
     Multicoloured Hover Variations
 */
- 
+
  #social-fb:hover {
      color: #3B5998;
  }

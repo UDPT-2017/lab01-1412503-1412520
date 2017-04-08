@@ -1,0 +1,51 @@
+.active{
+  font-size: 18px;
+	font-weight: bold;
+	font-family: "Times New Roman", Times, serif;
+}
+
+h1{
+	font-size: 30px;
+	color: black;
+	font-weight:bold;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+}
+.member {
+    margin: 5px;
+    border: 1px solid white;
+}
+
+/*rê chuột vào*/
+/*.member:hover {
+    border: 3px solid blue;
+}*/
+
+.member img {
+    width: 80%;
+    height: auto;
+}
+
+.desc {
+		font-size: 25px;
+		line-height: 0.75;
+    padding: 10px;
+    text-align: center;
+		font-family: "Times New Roman", Times, serif;
+}
+
+ img.set-center
+ {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.map{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+	width: 100%;
+  min-height: 600px;
+  border: 1.5px solid black;
+}
