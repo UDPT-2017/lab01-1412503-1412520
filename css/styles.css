@@ -25,13 +25,16 @@ h1 {
 
 
 
-.navbar-inverse {
+/*.navbar-inverse {
   background-color: #62A9FF;
   border-color: #62A9FF;
-  color: black;
+}*/
+
+
+
+.nav li{
+  height: 100%;
 }
-
-
 
 div.gallery {
     margin: 5px;
@@ -51,7 +54,9 @@ div.gallery img {
     height: 80%;
 }
 
-.sidebar {
+@media (min-width: 767px)
+{
+  .sidebar {
     position: fixed;
     top: 51px;
     bottom: 0;
@@ -69,6 +74,8 @@ div.gallery img {
     margin-right: -21px;
     margin-bottom: 20px;
     margin-left: -20px;
+}
+
 }
 
 
