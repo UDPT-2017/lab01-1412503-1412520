@@ -6,16 +6,21 @@
 		<title>Blog</title>
 
 		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="css/styles1.css">
+		<link rel="stylesheet" href="css/styles.css">
 		<link rel="stylesheet" href="css/font-awesome.css">
+		<script language="JavaScript" type="text/javascript" src="js/jquery.min.js" charset="utf-8"></script>
+		<script language="JavaScript" type="text/javascript" src="js/bootstrap.js" charset="utf-8"></script>
 	</head>
-	<body style="position: relative; height: 100%; top: 50px;">
-		<header>
+	<body style="position: relative; height: 100%; top: 40px;">
+
 			<nav class="navbar navbar-inverse navbar-fixed-top">
 				<div class="container-fluid">
 
 					 <div class="navbar-header">
-
+					 	  <p class ="pull-left visible-xs">
+					 	  		 <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvasleft" id ="offcanvasleft">
+					 	  		 <i style="color:white;" class="glyphicon glyphicon-chevron-left"></i></button>
+					 	  </p>
 					      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 					        <span class="icon-bar"></span>
 					        <span class="icon-bar"></span>
@@ -25,17 +30,100 @@
 					 </div>
 					  <div class="collapse navbar-collapse" id="myNavbar">
 						<ul class="nav navbar-nav">
-							<li><a href="home.html">Home</a></li>
+							<li ><a href="home.html">Home</a></li>
 							<li><a href="album.html">Albums</a></li>
 							<li ><a href="about.html">About</a></li>
-							<li class="active"><a href="#">Blog</a></li>
+							<li class="active"><a >Blog</a></li>
 						</ul>
 					  </div>
 				</div>
 			</nav>
-		</header>
 
-		<script src="js/jquery.min.js" charset="utf-8"></script>
-		<script src="js/bootstrap.js" charset="utf-8"></script>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar hidden-xs" >
+					<ul class="nav nav-sidebar">
+						<li><a href="#" style="width: 100%;">Item 1</a></li>
+						<li><a href="#">Item 2</a></li>
+						<li><a href="#">Item 3</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+					<div class="container">
+			      <div class="row">
+			        <div class="col-lg-4 col-sm-6 col-xs-12">
+								<a href="wblog/blog1.html">
+									<div class="blog">
+				            <img src="users/u1.jpg" alt="blog1" class="set-center">
+				            <div class="desc">Không biết viết cái gì bây giờ, ai cho tôi miếng ý tưởng đi hi hi....</div>
+											<p class="desc1"> <i class="set-center fa fa-eye ">1K viewers</i></p>
+											<div class="desc1"> Người đăng: Nguyễn Hoàng Thi</div>
+				          </div>
+								</a>
+
+			        </div>
+			        <div class="col-lg-4 col-sm-6 col-xs-12">
+			          <div class="blog">
+									<img src="users/u2.jpg" alt="blog2"class="set-center">
+			          	<div class="desc">Trời nóng quá đi mất, nóng gì nóng dữ vậy trời.....</div>
+									<p class="desc1"> <i class="set-center fa fa-eye ">1.6K viewers</i></p>
+									<div class="desc1"> Người đăng: Nguyễn Thị Thanh Thảo</div>
+			          </div>
+			        </div>
+							<div class="col-lg-4 col-sm-6 col-xs-12">
+			          <div class="blog">
+			            <img src="users/u3.jpg" alt="blog2"class="set-center">
+			            <div class="desc">Bỗng dưng trời đổ mưa, mưa xong lại nắng haiz.....</div>
+									<p class="desc1"> <i class="set-center fa fa-eye ">800 viewers</i></p>
+									<div class="desc1"> Người đăng: Nguyễn Hoàng Thi</div>
+			          </div>
+			        </div>
+			      </div>
+			    </div>
+					<div class="row footer">
+						<div class="col-xs-6 col-md-6 placeholder-footer">
+							<h4 style="border-left: 5px solid #62A9FF; padding: 5px;">Team members</h4>
+							<p>
+								<b>Leader:</b> Nguyễn Hoàng Thi
+							</p>
+							<p>
+								<b>Member:</b> Nguyễn Thị Thanh Thảo
+							</p>
+							<span class="text-muted">© 2017 - Site built by Precious Team</span></p>
+						</div>
+						<div class="col-xs-6 col-md-6 placeholder-footer">
+							<h4 style="border-left: 5px solid #62A9FF; padding: 5px;">Contact</h4>
+							<p>
+								<b>Email:</b>
+								<a href="mailto:nghoangthi1@gmail.com">nghoangthi1@gmail.com</a>
+							</p>
+							<p>
+								<b>Phone number:</b>
+								01284562789
+							</p>
+							<p>
+								<a href="https://www.facebook.com/thikhin96">
+									<i class="fa fa-facebook-square fa-3x social" id="social-fb"></i>
+								</a>
+								<a href="mailto:nghoangthi1@gmail.com">
+									<i id="social-em" class="fa fa-envelope-square fa-3x social"></i>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+		<script type="text/javascript">
+
+				$('#offcanvasleft').click(function(){
+  				$('.sidebar').toggleClass('active');
+			});
+
+		</script>
+
 	</body>
 </html>
