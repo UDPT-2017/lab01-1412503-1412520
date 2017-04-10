@@ -198,7 +198,6 @@ div.gallery img {
   	text-align: center;
   }
   .member {
-      margin: 5px;
       border: 2px solid lightgray;
   }
 
@@ -218,7 +217,6 @@ div.gallery img {
   		line-height: 1;
       padding: 10px;
       text-align: center;
-  		font-family: "Times New Roman", Times, serif;
   }
 
   .desc1 {
@@ -226,7 +224,6 @@ div.gallery img {
   		font-size: 15px;
   		line-height: 1;
       text-align: center;
-  		font-family: "Times New Roman", Times, serif;
       margin-bottom: 10px;
   }
 
@@ -258,7 +255,7 @@ div.gallery img {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
-  	 width: 100%;
+  	width: 100%;
     height: 100%;
     min-height: 500px;
     border: 1.5px solid black;
