@@ -8,9 +8,11 @@
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/styles.css">
 		<link rel="stylesheet" href="css/font-awesome.css">
+		<script language="JavaScript" type="text/javascript" src="js/jquery.min.js" charset="utf-8"></script>
+		<script language="JavaScript" type="text/javascript" src="js/bootstrap.js" charset="utf-8"></script>
 	</head>
-	<body style="position: relative; height: 100%; top: 50px;">
-		<header>
+	<body style="position: relative; height: 100%; top: 40px;">
+		
 			<nav class="navbar navbar-inverse navbar-fixed-top">
 				<div class="container-fluid">
 
@@ -36,11 +38,11 @@
 					  </div>
 				</div>
 			</nav>
-		</header>
+	
 
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-3 col-md-2 sidebar">
+				<div class="col-sm-3 col-md-2 sidebar hidden-xs" >
 					<ul class="nav nav-sidebar">
 						<li><a href="#" style="width: 100%;">Item 1</a></li>
 						<li><a href="#">Item 2</a></li>
@@ -149,7 +151,13 @@
 
 			</div>
 		</div>
-		<script src="js/jquery.min.js" charset="utf-8"></script>
-		<script src="js/bootstrap.js" charset="utf-8"></script>
+		<script type="text/javascript">
+
+				$('#offcanvasleft').click(function(){
+  				$('.sidebar').toggleClass('active');
+			});
+
+		</script>
+
 	</body>
 </html>
