@@ -7,16 +7,20 @@
 
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/styles.css">
-		<link rel="stylesheet" href="css/styles1.css">
 		<link rel="stylesheet" href="css/font-awesome.css">
+		<script language="JavaScript" type="text/javascript" src="js/jquery.min.js" charset="utf-8"></script>
+		<script language="JavaScript" type="text/javascript" src="js/bootstrap.js" charset="utf-8"></script>
 	</head>
-	<body style="position: relative; height: 100%; top: 50px;">
-		<header>
+	<body style="position: relative; height: 100%; top: 40px;">
+
 			<nav class="navbar navbar-inverse navbar-fixed-top">
 				<div class="container-fluid">
 
 					 <div class="navbar-header">
-
+					 	  <p class ="pull-left visible-xs">
+					 	  		 <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvasleft" id ="offcanvasleft">
+					 	  		 <i style="color:white;" class="glyphicon glyphicon-chevron-left"></i></button>
+					 	  </p>
 					      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 					        <span class="icon-bar"></span>
 					        <span class="icon-bar"></span>
@@ -26,45 +30,96 @@
 					 </div>
 					  <div class="collapse navbar-collapse" id="myNavbar">
 						<ul class="nav navbar-nav">
-							<li><a href="home.html">Home</a></li>
+							<li ><a href="home.html">Home</a></li>
 							<li><a href="album.html">Albums</a></li>
-							<li class="active"><a href="#">About</a></li>
+							<li class="active"><a >About</a></li>
 							<li><a href="blog.html">Blog</a></li>
 						</ul>
 					  </div>
 				</div>
 			</nav>
-		</header>
-		<h1>Nhóm chưa biết tên</h1>
-		<div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-xs-12">
-          <div class="member">
-            <img src="image/520.jpg" alt="1412520" class="set-center">
-            <div class="desc">1412520 <br></br> Nguyễn Hoàng Thi</div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-xs-12">
-          <div class="member">
-            <img src="image/503.jpg" alt="1412503"class="set-center">
-            <div class="desc">1412503<br></br> Nguyễn Thị Thanh Thảo</div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-		<div>
-	    <h1>Liên hệ với nhóm</h1>
-	    <div class="container">
-	      <div class="row">
-	        <div class="col-sn-12">
-            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.5852906325385!2d106.68986231441849!3d10.766409992328356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f164742b573%3A0x7b0ed104f0f4fed4!2zMTMxIFRy4bqnbiBIxrBuZyDEkOG6oW8sIFBo4bqhbSBOZ8WpIEzDo28sIFF14bqtbiAxLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1491642775157"
-             frameborder="0"  allowfullscreen></iframe>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-		<script src="js/jquery.min.js" charset="utf-8"></script>
-		<script src="js/bootstrap.js" charset="utf-8"></script>
+
+
+
+				<div class="container-fluid">
+					<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar hidden-xs" >
+					<ul class="nav nav-sidebar">
+						<li><a href="#" style="width: 100%;">Item 1</a></li>
+						<li><a href="#">Item 2</a></li>
+						<li><a href="#">Item 3</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+						<h1 class="about-h1">Nhóm chưa biết tên</h1>
+
+            <div class="row">
+              <div class="col-sm-6 col-xs-12">
+                <div class="member">
+                  <img src="image/520.jpg" alt="1412520" class="set-center">
+                  <div class="desc">1412520 <br></br> Nguyễn Hoàng Thi</div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <div class="member">
+                  <img src="image/503.jpg" alt="1412503"class="set-center">
+                  <div class="desc">1412503<br></br> Nguyễn Thị Thanh Thảo</div>
+                </div>
+              </div>
+            </div>
+
+						      	    <h1 class="about-h1">Liên hệ với nhóm</h1>
+
+						      	      <div class="row">
+						      	        <div class="col-sn-12">
+						                  <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.5852906325385!2d106.68986231441849!3d10.766409992328356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f164742b573%3A0x7b0ed104f0f4fed4!2zMTMxIFRy4bqnbiBIxrBuZyDEkOG6oW8sIFBo4bqhbSBOZ8WpIEzDo28sIFF14bqtbiAxLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1491642775157"
+						                   frameborder="0"  ></iframe>
+						      	        </div>
+						      	      </div>
+													<div class="row footer">
+														<div class="col-xs-6 col-md-6 placeholder-footer">
+															<h4 style="border-left: 5px solid #62A9FF; padding: 5px;">Team members</h4>
+															<p>
+																<b>Leader:</b> Nguyễn Hoàng Thi
+															</p>
+															<p>
+																<b>Member:</b> Nguyễn Thị Thanh Thảo
+															</p>
+															<span class="text-muted">© 2017 - Site built by Precious Team</span></p>
+														</div>
+														<div class="col-xs-6 col-md-6 placeholder-footer">
+															<h4 style="border-left: 5px solid #62A9FF; padding: 5px;">Contact</h4>
+															<p>
+																<b>Email:</b>
+																<a href="mailto:nghoangthi1@gmail.com">nghoangthi1@gmail.com</a>
+															</p>
+															<p>
+																<b>Phone number:</b>
+																01284562789
+															</p>
+															<p>
+																<a href="https://www.facebook.com/thikhin96">
+																	<i class="fa fa-facebook-square fa-3x social" id="social-fb"></i>
+																</a>
+																<a href="mailto:nghoangthi1@gmail.com">
+																	<i id="social-em" class="fa fa-envelope-square fa-3x social"></i>
+																</a>
+															</p>
+														</div>
+													</div>
+
+				</div>
+
+        </div>
+			</div>
+		<script type="text/javascript">
+
+				$('#offcanvasleft').click(function(){
+  				$('.sidebar').toggleClass('active');
+			});
+
+		</script>
+
 	</body>
 </html>
