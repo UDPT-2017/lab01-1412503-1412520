@@ -2,7 +2,11 @@ var express = require('express');
 var app = express();
 
 app.use(express.static('public'));
+app.use(express.static('public/albums'));
 app.use('/components', express.static('bower_components'));
+
+app.set('views', './views');
+app.set('view engine', 'pug');
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
