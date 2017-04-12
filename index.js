@@ -51,15 +51,9 @@ app.get('/blog', function (req, res) {
 app.get('/blog-views/blog1', function(req, res){
     res.render('blog-views/blog1',{title:"blog1", message:""});
 });
-=======
-app.engine('hbs', exphbs({}));
-app.set('view engine', 'hbs');
 
-
-
+/////////////////////////////////////////////////////////
 app.get('/hbs', function (req, res) {
-
-
   var pics= function(img, tit, det){
   	this.img = img;
   	this.tit = tit;
@@ -95,7 +89,6 @@ app.get('/album', function(req, res){
 	res.render('album', {gallery: gallery});
 });
 
->>>>>>> ccda6c0c75821e2438b31c26e5f1a11254c7a9ec
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
