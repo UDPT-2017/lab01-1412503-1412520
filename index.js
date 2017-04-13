@@ -2,14 +2,42 @@ var express = require('express');
 
 var app = express();
 var exphbs  = require('express-handlebars');
-
+// var active = function(home, album, about, blog){
+//   this.home=home,this.album=album, this.about=about,this.blog=blog
+// }
+var hbs = exphbs.create({
+    // Specify helpers which are only registered on this instance.
+    helpers: {
+        active_home: function () {
+          return "active";
+        },
+        active_album: function () {
+            return "active";
+        },
+        active_about: function () {
+            return "active";
+        },
+        active_blog: function () {
+            return "active";
+        }
+    }
+});
 app.use(express.static('public'));
 app.use('/components', express.static('bower_components'));
-app.engine('hbs', exphbs({}));
+app.engine('hbs', exphbs({
+  extname: '.hbs',
+  defaultLayout:'application'
+}));
+
 app.set('view engine', 'hbs');
 
 app.get('/about', function (req, res) {
-    res.render('about',{title:"About", message:""});
+    res.render('about',{
+      title:"About",
+      helpers: {
+        active_about: function () { return "active"; }
+      }
+    });
 });
 
 app.get('/blog', function (req, res) {
@@ -27,33 +55,27 @@ app.get('/blog', function (req, res) {
     "Trời buồn trời đổ cơn mưa ta buồn ta ngủ từ trưa tới chiều....")
     ]
 
-    // var blog1 = {name:"Thảo Lúa", avatar:"/users/u1.jpg",
-    //     views:50, noidung:"Buồn ơi là sầu huhuh sao mà ngu thế này k biết nữa...."};
-    // var blog2 = {name:"Thi Thi", avatar:"/users/u3.jpg",
-    //     views:55, noidung:"Trời buồn trời đổ cơn mưa ta buồn ta ngủ từ trưa tới chiều...."};
-    // var blog =[blog1];
-    // blog[blog.length]=blog2;
-
-
-    // var images= [
-    //   '/users/u1.jpg',
-    //   '/users/u2.jpg',
-    //   '/users/u3.jpg',
-    //   '/users/u4.jpg',
-    //   '/users/u5.jpg',
-    //   '/users/u6.jpg',
-    // ]
-    // res.render('blog',{title:"Blog", blog:blog});
-
-    res.render('blog',{title:"Blog", blog:blog_array});
+    res.render('blog',{
+      title:"Blog",
+      blog:blog_array,
+      helpers: {
+        active_blog: function () { return "active"; }
+      }
+    });
 });
 
 app.get('/blog-views/blog1', function(req, res){
-    res.render('blog-views/blog1',{title:"blog1", message:""});
+    res.render('blog-views/blog1',{
+      title:"blog1",
+      layout: "blog_detail",
+      helpers: {
+        active_blog: function () { return "active"; }
+      }
+    });
 });
 
 /////////////////////////////////////////////////////////
-app.get('/hbs', function (req, res) {
+app.get('/', function (req, res) {
   var pics= function(img, tit, det){
   	this.img = img;
   	this.tit = tit;
@@ -66,7 +88,10 @@ app.get('/hbs', function (req, res) {
   				new pics('image/8.jpg', 'Suspecting', 'Detail')];
 
 
-  res.render('index', {tit: 'Trang chủ', header: 'Outstanding Albums', sheader: 'New Posts', images: images, albumpics: albumpics, pickedpic: 'image/1.jpg'});
+  res.render('index', {tit: 'Trang chủ', header: 'Outstanding Albums', sheader: 'New Posts', images: images, albumpics: albumpics, pickedpic: 'image/1.jpg',
+  helpers: {
+    active_home: function () { return "active"; }
+  }});
 });
 
 app.get('/album', function(req, res){
@@ -86,7 +111,10 @@ app.get('/album', function(req, res){
 					new albums('1', 'Cuộc sống dễ dàng :)', 'image/13.jpg', 'Nguyễn Hoàng Thi', '100'),
 					new albums('1', 'Cuộc sống dễ dàng :)', 'image/13.jpg', 'Nguyễn Hoàng Thi', '100')];
 
-	res.render('album', {gallery: gallery});
+	res.render('album', {gallery: gallery,
+    helpers: {
+    active_album: function () { return "active"; }
+  }});
 });
 
 
