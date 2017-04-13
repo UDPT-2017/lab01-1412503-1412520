@@ -5,8 +5,12 @@ var exphbs  = require('express-handlebars');
 
 app.use(express.static('public'));
 app.use('/components', express.static('bower_components'));
-app.engine('hbs', exphbs({}));
+app.engine('hbs', exphbs({
+  extname: '.hbs',
+  defaultLayout: 'application'
+}));
 app.set('view engine', 'hbs');
+
 
 app.get('/about', function (req, res) {
     res.render('about',{title:"About", message:""});
@@ -26,25 +30,6 @@ app.get('/blog', function (req, res) {
     new blog("Thi Thi", "/users/u3.jpg",55,
     "Trời buồn trời đổ cơn mưa ta buồn ta ngủ từ trưa tới chiều....")
     ]
-
-    // var blog1 = {name:"Thảo Lúa", avatar:"/users/u1.jpg",
-    //     views:50, noidung:"Buồn ơi là sầu huhuh sao mà ngu thế này k biết nữa...."};
-    // var blog2 = {name:"Thi Thi", avatar:"/users/u3.jpg",
-    //     views:55, noidung:"Trời buồn trời đổ cơn mưa ta buồn ta ngủ từ trưa tới chiều...."};
-    // var blog =[blog1];
-    // blog[blog.length]=blog2;
-
-
-    // var images= [
-    //   '/users/u1.jpg',
-    //   '/users/u2.jpg',
-    //   '/users/u3.jpg',
-    //   '/users/u4.jpg',
-    //   '/users/u5.jpg',
-    //   '/users/u6.jpg',
-    // ]
-    // res.render('blog',{title:"Blog", blog:blog});
-
     res.render('blog',{title:"Blog", blog:blog_array});
 });
 
@@ -53,7 +38,7 @@ app.get('/blog-views/blog1', function(req, res){
 });
 
 /////////////////////////////////////////////////////////
-app.get('/hbs', function (req, res) {
+app.get('/', function (req, res) {
   var pics= function(img, tit, det){
   	this.img = img;
   	this.tit = tit;
@@ -66,7 +51,16 @@ app.get('/hbs', function (req, res) {
   				new pics('image/8.jpg', 'Suspecting', 'Detail')];
 
 
-  res.render('index', {tit: 'Trang chủ', header: 'Outstanding Albums', sheader: 'New Posts', images: images, albumpics: albumpics, pickedpic: 'image/1.jpg'});
+  res.render('index', {tit: 'Trang chủ', 
+                      header: 'Outstanding Albums', 
+                      sheader: 'New Posts', 
+                      images: images, 
+                      albumpics: albumpics, 
+                      pickedpic: 'image/1.jpg',
+                      active_index: function () {
+                        return "active";
+                      }
+});
 });
 
 app.get('/album', function(req, res){
@@ -86,8 +80,40 @@ app.get('/album', function(req, res){
 					new albums('1', 'Cuộc sống dễ dàng :)', 'image/13.jpg', 'Nguyễn Hoàng Thi', '100'),
 					new albums('1', 'Cuộc sống dễ dàng :)', 'image/13.jpg', 'Nguyễn Hoàng Thi', '100')];
 
-	res.render('album', {gallery: gallery});
-});
+	res.render('album', {gallery: gallery, 
+                      tit: 'Bộ sưu tập', 
+                      active_albums: function () {
+                            return "active";
+                      }
+                      });
+  });
+
+
+app.get('/album-detail', function(req, res){
+
+  var albumName='Cuộc sống dễ dàng :)';
+  var albumShort="Something short and leading about the collection below its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.";
+  var albumDetail =function(img, uploader, view){
+    this.img = img;
+    this.uploader = uploader;
+    this.view = view;
+  };
+
+  var album = [new albumDetail('image/13.jpg', 'Nguyễn Hoàng Thi', '100'),
+          new albumDetail('image/13.jpg', 'Nguyễn Hoàng Thi', '100'),
+          new albumDetail('image/13.jpg', 'Nguyễn Hoàng Thi', '100'),
+          new albumDetail('image/13.jpg', 'Nguyễn Hoàng Thi', '100'),
+          new albumDetail('image/13.jpg', 'Nguyễn Hoàng Thi', '100'),
+          new albumDetail('image/13.jpg', 'Nguyễn Hoàng Thi', '100')];
+
+  res.render('album-detail', {album: album, 
+                      albumName: albumName,
+                      albumShort: albumShort,
+                      active_albums: function () {
+                            return "active";
+                      }
+                      });
+  });
 
 
 app.listen(3000, function () {
