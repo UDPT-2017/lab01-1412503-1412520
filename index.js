@@ -18,9 +18,7 @@ app.set('view engine', 'hbs');
 app.get('/about', function (req, res) {
     res.render('about',{
       title:"About",
-      helpers: {
-        active_about: function () { return "active"; }
-      }
+      active_about: function () { return "active"; }
     });
 });
 
@@ -41,9 +39,7 @@ app.get('/blog', function (req, res) {
     res.render('blog',{
       title:"Blog",
       blog:blog_array,
-      helpers: {
-        active_blog: function () { return "active"; }
-      }
+      active_blog: function () { return "active"; }
     });
 });
 
@@ -51,9 +47,7 @@ app.get('/blog-views/blog1', function(req, res){
     res.render('blog-views/blog1',{
       title:"blog1",
       layout: "blog_detail",
-      helpers: {
-        active_blog: function () { return "active"; }
-      }
+      active_blog: function () { return "active"; }
     });
 });
 
