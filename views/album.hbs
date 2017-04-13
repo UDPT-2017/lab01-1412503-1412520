@@ -1,31 +1,29 @@
-	<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-3 col-md-2 sidebar hidden-xs" >
-					<ul class="nav nav-sidebar">
-						<li><a href="#">Item 1</a></li>
-						<li><a href="#">Item 2</a></li>
-						<li><a href="#">Item 3</a></li>
-					</ul>
-				</div>
-				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-					<h1 class="page-header">Albums</h1>
-					<div class="container-fluid">
-					<div class="row">
-						{{#each gallery}}
-							<div class="col-md-4 col-xs-6">
-							<div class="container-fluid">
-								<div class="gallery img-responsive"><img src= "{{this.img}}"></img></div>
+
+	<div class="col-sm-3 col-md-2 sidebar hidden-xs" >
+			<ul class="nav nav-sidebar">
+				<li><a href="#">Item 1</a></li>
+				<li><a href="#">Item 2</a></li>
+				<li><a href="#">Item 3</a></li>
+			</ul>
+		</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<h1 class="page-header">Albums</h1>
+			<div class="container-fluid">
+				<div class="row">
+					{{#each gallery}}
+					<div class="col-md-4 col-xs-6">
+						<div class="container-fluid">
+							<div class="gallery img-responsive"><img src= "{{this.img}}"></img></div>
 								<div class="imgcreator">
 									<p><b>Name:</b> {{this.name}}</p>
 									<p><b>Creator:</b> {{this.creator}}</p>
 									<p><span class="glyphicon glyphicon-eye-open"> {{this.view}}</span></p>
-									<a href="album-detail{{this.id}}"><i class="fa fa-angle-double-right"></i> Detail</a>
+									<a href="album-detail"><i class="fa fa-angle-double-right"></i> Detail</a>
 								</div>
-							</div>
-							</div>
-						{{/each}}
+						</div>
 					</div>
-					</div>
+					{{/each}}
 				</div>
 			</div>
+			{{> footer}}
 		</div>
