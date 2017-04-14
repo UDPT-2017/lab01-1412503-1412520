@@ -34,6 +34,8 @@ app.get('/blog', function (req, res) {
     new blog("Thảo Lúa", "/users/u1.jpg",50,
     "Buồn ơi là sầu huhu sao mà ngu thế này k biết nữa...."),
     new blog("Thi Thi", "/users/u3.jpg",55,
+    "Trời buồn trời đổ cơn mưa ta buồn ta ngủ từ trưa tới chiều...."),
+    new blog("Thi Thi", "/users/u5.jpg",55,
     "Trời buồn trời đổ cơn mưa ta buồn ta ngủ từ trưa tới chiều....")
     ]
     res.render('blog',{
@@ -43,10 +45,9 @@ app.get('/blog', function (req, res) {
     });
 });
 
-app.get('/blog-views/blog1', function(req, res){
-    res.render('blog-views/blog1',{
+app.get('/blog-detail', function(req, res){
+    res.render('blog-detail',{
       title:"blog1",
-      layout: "blog_detail",
       active_blog: function () { return "active"; }
     });
 });
