@@ -2,9 +2,6 @@ var express = require('express');
 
 var app = express();
 var exphbs  = require('express-handlebars');
-// var active = function(home, album, about, blog){
-//   this.home=home,this.album=album, this.about=about,this.blog=blog
-// }
 app.use(express.static('public'));
 app.use('/components', express.static('bower_components'));
 app.engine('hbs', exphbs({
