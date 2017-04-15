@@ -6,7 +6,7 @@ app.use(express.static('public'));
 app.use('/components', express.static('bower_components'));
 app.engine('hbs', exphbs({
   extname: '.hbs',
-  defaultLayout: 'application'
+  defaultLayout:'application'
 }));
 
 app.set('view engine', 'hbs');
@@ -15,9 +15,7 @@ app.set('view engine', 'hbs');
 app.get('/about', function (req, res) {
     res.render('about',{
       title:"About",
-      helpers: {
-        active_about: function () { return "active"; }
-      }
+      active_about: function () { return "active"; }
     });
 });
 
@@ -33,24 +31,21 @@ app.get('/blog', function (req, res) {
     new blog("Thảo Lúa", "/users/u1.jpg",50,
     "Buồn ơi là sầu huhu sao mà ngu thế này k biết nữa...."),
     new blog("Thi Thi", "/users/u3.jpg",55,
+    "Trời buồn trời đổ cơn mưa ta buồn ta ngủ từ trưa tới chiều...."),
+    new blog("Thi Thi", "/users/u5.jpg",55,
     "Trời buồn trời đổ cơn mưa ta buồn ta ngủ từ trưa tới chiều....")
     ]
     res.render('blog',{
       title:"Blog",
       blog:blog_array,
-      helpers: {
-        active_blog: function () { return "active"; }
-      }
+      active_blog: function () { return "active"; }
     });
 });
 
-app.get('/blog-views/blog1', function(req, res){
-    res.render('blog-views/blog1',{
+app.get('/blog-detail', function(req, res){
+    res.render('blog-detail',{
       title:"blog1",
-      layout: "blog_detail",
-      helpers: {
-        active_blog: function () { return "active"; }
-      }
+      active_blog: function () { return "active"; }
     });
 });
 
@@ -130,7 +125,6 @@ app.get('/album-detail', function(req, res){
                       }
                       });
   });
-
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
