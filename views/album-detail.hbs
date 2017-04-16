@@ -1,33 +1,60 @@
-				<div class="col-sm-3 col-md-2 sidebar hidden-xs" >
-					<ul class="nav nav-sidebar">
-						<li><a href="#">Item 1</a></li>
-						<li><a href="#">Item 2</a></li>
-						<li><a href="#">Item 3</a></li>
-					</ul>
-				</div>
-				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-					<h1 class="page-header">{{albumName}}</h1>
-					<section class="jumbotron text-center">
-						<div class ="container">
-							<p class="lead text-muted">{{albumShort}}</p>
-						</div>
-					</section>
+<div class="col-sm-3 col-md-2 sidebar hidden-xs" >
+	<ul class="nav nav-sidebar">
+		<li><a href="#">Item 1</a></li>
+		<li><a href="#">Item 2</a></li>
+		<li><a href="#">Item 3</a></li>
+	</ul>
+</div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<h1 class="page-header">{{albumName}}</h1>
+	<section class="jumbotron text-center">
+		<div class ="container">
+			<p class="lead text-muted">{{albumShort}}</p>
+		</div>
+	</section>
 					
-					<div class="container-fluid">
-					<div class="row">
-						{{#each album}}
-						<div class="col-md-4 col-xs-6">
-						<div class="container-fluid">
-							<div class="gallery img-responsive"><img src="{{this.img}}"></img></div>
-							<div class="imgcreator">
-								<p><b>Uploader:</b>{{this.uploader}}</p>
-								<p><span class="glyphicon glyphicon-eye-open"> {{this.view}}</span></p>
-							</div>
-						</div>
-						</div>
-						{{/each}}
+	<div class="container-fluid">
+		<div class="row">
+			{{#each picture}}
+			<div class="col-md-4 col-xs-6">
+				<div class="container-fluid">
+					<div class="gallery" onclick=openImg("/image/{{this.picid}}")>
+						<img class="img-responsive"   src="/image/{{this.picid}}"></img>
 					</div>
-					</div>
-					{{> footer}}
+						<div class="imgcreator">
+							<p><b>Uploader:</b>{{this.username}}</p>
+							<p><span class="glyphicon glyphicon-eye-open"> {{this.viewnumber}}</span></p>
+						</div>
 				</div>
-					
+			</div>
+			{{/each}}
+		</div>
+		<div id="myModal" class="modal">
+			<span class="close">&times;</span>
+			<img class="modal-content" id="img01">
+		</div>
+	</div>
+		{{> footer}}
+</div>
+<script>
+
+	var modal = document.getElementById('myModal');
+
+	
+	var modalImg = document.getElementById("img01");
+
+	function openImg(image){
+	    modal.style.display = "block";
+	    modalImg.src = image;
+	}
+
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() { 
+	    modal.style.display = "none";
+
+
+}
+
+</script>			
