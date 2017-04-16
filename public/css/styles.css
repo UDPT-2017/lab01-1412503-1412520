@@ -195,7 +195,7 @@ div.gallery:hover {
   margin-top:10px;}
 
 
- 
+
 
 
 
@@ -223,7 +223,7 @@ div.gallery:hover {
 }
 
 /* Add Animation */
-.modal-content, #caption {    
+.modal-content, #caption {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
@@ -231,12 +231,12 @@ div.gallery:hover {
 }
 
 @-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)} 
+    from {-webkit-transform:scale(0)}
     to {-webkit-transform:scale(1)}
 }
 
 @keyframes zoom {
-    from {transform:scale(0)} 
+    from {transform:scale(0)}
     to {transform:scale(1)}
 }
 
@@ -327,7 +327,7 @@ div.gallery:hover {
     margin-top: 5%;
     margin-bottom: 5%;
     border: 1px solid lightgrey;
-    height: 350px;
+    height: 400px;
   }
 
   .short_content {
@@ -422,4 +422,3 @@ div.gallery:hover {
     border-radius: 4px;
     font-size: 20px;
 }
-
