@@ -1,5 +1,4 @@
-
-		<div class="col-sm-3 col-md-2 sidebar hidden-xs" >
+			<div class="col-sm-3 col-md-2 sidebar hidden-xs" >
 			<ul class="nav nav-sidebar">
 				<li><a href="#" style="width: 100%;">Item 1</a></li>
 				<li><a href="#">Item 2</a></li>
@@ -7,19 +6,20 @@
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<div class="row">
-					{{#each blog}}
-					<div class="col-lg-4 col-sm-6 col-xs-12">
-						<a href="/blog-detail">
-							<div class="blog">
-								<img src="{{this.avatar}}" alt="blog1" class="set-center">
-								<div class="desc">{{this.noidung}}</div>
-									<p class="desc1"> <i class="set-center fa fa-eye "></i>{{this.views}}viewers</p>
-									<div class="desc1"> Người đăng:{{this.name}}</div>
-							</div>
-						</a>
-					</div>
-					{{/each}}
+			<h1 class="page-header">Blogs</h1>
+			<div class="row">
+				{{#each blog}}
+				<div class="col-lg-4 col-sm-6 col-xs-12">
+					<a href="/blog/{{this.blogid}}">
+						<div class="blog">
+							<img src="/blog_avatar/{{this.blogpic}}" alt="blog" class="set-center">
+							<p class="short_content">{{this.bcontent}}</p>
+							<p class="desc1"> <i class="set-center fa fa-eye "></i> {{this.viewnumber}}</p>
+							<p class="desc1"> Người đăng:{{this.username}}</p>
+						</div>
+					</a>
 				</div>
-				{{>footer}}
+				{{/each}}
+			</div>
+			{{>footer}}
 		</div>
