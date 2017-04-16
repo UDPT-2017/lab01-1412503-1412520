@@ -12,12 +12,12 @@
 					{{#each gallery}}
 					<div class="col-md-4 col-xs-6">
 						<div class="container-fluid">
-							<div class="gallery img-responsive"><img src= "{{this.img}}"></img></div>
+							<div class="gallery img-responsive"><img src= "/image/{{this.pic}}"></img></div>
 								<div class="imgcreator">
-									<p><b>Name:</b> {{this.name}}</p>
-									<p><b>Creator:</b> {{this.creator}}</p>
-									<p><span class="glyphicon glyphicon-eye-open"> {{this.view}}</span></p>
-									<a href="album-detail"><i class="fa fa-angle-double-right"></i> Detail</a>
+									<p><b>Name:</b> {{this.title}}</p>
+									<p><b>Creator:</b> {{this.username}}</p>
+									<p><span class="glyphicon glyphicon-eye-open"> {{this.s}}</span></p>
+									<a href="albums/{{this.albumid}}"><i class="fa fa-angle-double-right"></i> Detail</a>
 								</div>
 						</div>
 					</div>
