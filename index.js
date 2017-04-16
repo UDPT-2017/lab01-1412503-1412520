@@ -65,27 +65,23 @@ app.get('/blog/:id', function(req, res){
         break;
       }
     }
-    var bid = blog.blogid;
-    // var q2 = squel.select()
-    //               .from("commentt", "users")
-    //               .fields("users.username", "commentt.cmt")
-    //               .where("commentt.blogid = 1")
-    //               .where("commentt.userid = users.userid");
 
-    var query2 = client.query('select username, cmt from users, commentt where commentt.userid = users.userid and commentt.blogid = 1', function(err, result_cmt){
-    // var query2 = client.query(q2, function(err, result_cmt){
-      comments = result_cmt.rows;
-      console.log(result_cmt.rows);
-      res.render('blog-detail',{
-        blog:blog,
-        comments: comments,
-        tit:"Blog" + blog.blogid,
-        active_blog: function () { return "active"; }
+    if(blogs!=null){
+      var query2 = client.query('select username, cmt from users, commentt where commentt.userid = users.userid and commentt.blogid =' + blog.blogid , function(err, result_cmt){
+      // var query2 = client.query(q2, function(err, result_cmt){
+        comments = result_cmt.rows;
+        console.log(result_cmt.rows);
+        res.render('blog-detail',{
+          blog:blog,
+          comments: comments,
+          tit:"Blog" + blog.blogid,
+          active_blog: function () { return "active"; }
+        });
       });
-    });
-    var query3 = client.query('update blog set viewnumber=viewnumber+1 where blog.blogid = 1', function(err, result){
-      console.log(result);
-      });
+      var query3 = client.query('update blog set viewnumber=viewnumber+1 where blog.blogid =' + blog.blogid , function(err, result){
+        console.log(result);
+        });
+    }
     });
   });
 
