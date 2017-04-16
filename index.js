@@ -3,7 +3,7 @@ var pg = require('pg');
 var app = express();
 var exphbs  = require('express-handlebars');
 
-var connectionString = 'postgres://postgres:31101996@localhost:5432/'+ 'abmanagement';
+var connectionString = 'postgres://fnytwqljxvlgih:f4310f8c234608a6f02acf7105269edd408c354a3928c182d925d68577e3a041@ec2-54-225-182-108.compute-1.amazonaws.com:5432/d8prbaqobhvhrr';
 
 app.use(express.static('public'));
 app.use('/components', express.static('bower_components'));
