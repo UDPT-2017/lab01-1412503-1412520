@@ -2,19 +2,34 @@
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar hidden-xs" >
 			<ul class="nav nav-sidebar">
-				<li><a href="#">Item 1</a></li>
-				<li><a href="#">Item 2</a></li>
-				<li><a href="#">Item 3</a></li>
+				<br>
+				<br>
+				<br>
+				<li><a class="about-detail">{{blog.viewnumber}} views</a> </li>
+				<li><a class="about-detail">Người đăng: {{blog.username}}</a></li>
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="row" >
 					<ol class="breadcrumb">
 						<li ><a href="/blog">Blog</a></li>
-						<li>Blog1</li>
+						<li class="active"><a href="#">Blog {{blog.id}}</a></li>
 					</ol>
 			</div>
-			{{body}}
+			<div class="map">
+				<img src="{{blog.blogpic}}" style="width:65%; height: auto" class="set-center">
+				<p class="full_contents" >{{blog.bcontent}}</p>
+			</div>
+			<p class="full_contents" style="font-weight: bold">Comments</p>
+			{{#each comments}}
+				<div class="comment">
+					<p >{{this.username}}: {{this.cmt}}</p>
+				</div>
+			{{/each}}
+			<form>
+  			<textarea>Yours comments...</textarea>
+			</form>
+			<button class = "btn_send" type="button" name="button">Send</button>
 			{{>footer}}
 		</div>
 	</div>
