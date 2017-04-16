@@ -20,11 +20,11 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
 			<div class="item active">
-				<img src="{{pickedpic}}" alt="Chania" class="img-responsive" width="460" height="345">
+				<img src="/image/{{pickedpic}}" alt="Chania" class="img-responsive" width="460" height="345">
 			</div>
 			{{#each albumpics}}
 				<div class="item">
-					<img src="{{this}}" alt="Chania" class="img-responsive" width="460" height="345">
+					<img src="/image/{{this.pic}}" alt="Chania" class="img-responsive" width="460" height="345">
 				</div>
 			{{/each}}
 			</div>
@@ -43,9 +43,9 @@
 			{{#each images}}
 			<div class="col-xs-6 col-sm-3 placeholder">
 
-				<a href="#"><img src="{{this.img}}" class="img-circle img-responsive" width="300" height="300"></a>
-				<h4>{{this.tit}}</h4>
-				<span class="text-muted">{{this.det}}</span>
+				<a href="#"><img src="/image/{{this.blogpic}}" class="img-circle img-responsive" width="300" height="300"></a>
+				<h4><p>{{this.bcontent}}</p></h4>
+				<span class="text-muted">{{this.username}}</span>
 			</div>
 			{{/each}}
 		</div>

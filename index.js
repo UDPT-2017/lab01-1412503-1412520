@@ -12,7 +12,6 @@ app.engine('hbs', exphbs({
 }));
 
 
-var albumModel = require('./model/album');
 app.set('view engine', 'hbs');
 
 
@@ -60,13 +59,14 @@ app.get('/', function (req, res) {
   	this.tit = tit;
   	this.det = det;
   };
-  var albumpics = ['/image/2.jpg', '/image/3.jpg', '/image/4.jpg', ];
+
+  /*var albumpics = ['/image/2.jpg', '/image/3.jpg', '/image/4.jpg', ];
   var images=[ new pics('/image/5.jpg', 'Wishing', 'Detail'),
   				new pics('/image/6.jpg', 'Waiting', 'Detail'),
   				new pics('/image/7.jpg', 'Being Serious', 'Detail'),
-  				new pics('/image/8.jpg', 'Suspecting', 'Detail')];
+  				new pics('/image/8.jpg', 'Suspecting', 'Detail')];*/
 
-  res.render('index', {tit: 'Trang chủ',
+  /*res.render('index', {tit: 'Trang chủ',
                       header: 'Outstanding Albums',
                       sheader: 'New Posts',
                       images: images,
@@ -74,35 +74,44 @@ app.get('/', function (req, res) {
                       pickedpic: 'image/1.jpg',
                       active_index: function () {
                         return "active";
-                      }
-});
-});
+                      }});*/
 
-/*app.get('/albums', function(req, res){
+  var albumpics = [];
+  var images = [];
 
-	var albums=function(id, name, img, creator, view){
-		this.id = id;
-		this.name = name;
-		this.img = img;
-		this.creator = creator;
-		this.view = view;
-	};
+   var  client = new pg.Client(connectionString);
 
-  /*
-	var gallery = [new albums('1', 'Cuộc sống dễ dàng :)', 'image/13.jpg', 'Nguyễn Hoàng Thi', '100'),
-					new albums('2', 'Cuộc sống dễ dàng :)', 'image/13.jpg', 'Nguyễn Hoàng Thi', '100'),
-					new albums('3', 'Cuộc sống dễ dàng :)', 'image/13.jpg', 'Nguyễn Hoàng Thi', '100'),
-					new albums('4', 'Cuộc sống dễ dàng :)', 'image/13.jpg', 'Nguyễn Hoàng Thi', '100'),
-					new albums('5', 'Cuộc sống dễ dàng :)', 'image/13.jpg', 'Nguyễn Hoàng Thi', '100'),
-					new albums('6', 'Cuộc sống dễ dàng :)', 'image/13.jpg', 'Nguyễn Hoàng Thi', '100')];
+  client.connect();
+
+  var query1 = client.query('SELECT DISTINCT pic FROM album LIMIT 4', function(err, result){
+      albumpics = result.rows;
+      console.log(albumpics);
+  });
+
+  if (albumpics != null)
+  {
+    var query2 = client.query('SELECT blogpic, bcontent, username FROM blog, users WHERE blog.writer = users.userid LIMIT 4', function(err, result){
+      images = result.rows;
+      console.log(images);
+      var pickedpic = albumpics[3].pic;
+      res.render('index', {tit: 'Trang chủ',
+                      header: 'Outstanding Albums',
+                      sheader: 'New Posts',
+                      images: images,
+                      albumpics: albumpics,
+                      pickedpic: pickedpic,
+                      active_index: function () {
+                        return "active";
+                      }});
+  });
+  }
   
-	res.render('album', {gallery: gallery,
-                      tit: 'Bộ sưu tập',
-                      active_albums: function () {
-                            return "active";
-                      }
-                      });
-  });*/
+
+  
+
+
+});
+
 
 app.get('/albums', function(req, res){
 
@@ -115,7 +124,7 @@ app.get('/albums', function(req, res){
 
   client.connect();
  
-  var query = client.query('SELECT album.albumid, album.title, users.username, album.pic, SUM(picture.viewNumber) as S FROM album, picture, users WHERE creator = userid AND album.albumid = picture.albumid GROUP BY album.albumid, creator, album.pic, album.title, users.username', function(err, result){
+  var query1 = client.query('SELECT album.albumid, album.title, users.username, album.pic, SUM(picture.viewNumber) as S FROM album, picture, users WHERE creator = userid AND album.albumid = picture.albumid GROUP BY album.albumid, creator, album.pic, album.title, users.username', function(err, result){
                 gallery = result.rows;
                 console.log(result.rows);
                 res.render('album', {gallery: gallery,
@@ -126,36 +135,7 @@ app.get('/albums', function(req, res){
                       });});
 
 
-
   });
-
-/*app.get('/albums/:albumid', function(req, res){
-
-  var albumName='Cuộc sống dễ dàng :)';
-  var albumShort="Something short and leading about the collection below its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.";
-  var albumDetail =function(id, img, uploader, view){
-    this.id = id;
-    this.img = img;
-    this.uploader = uploader;
-    this.view = view;
-  };
-
-  var picture = [new albumDetail('1', '/image/13.jpg', 'Nguyễn Hoàng Thi', 100),
-          new albumDetail('2', '/image/13.jpg', 'Nguyễn Hoàng Thi', 100),
-          new albumDetail('3', '/image/13.jpg', 'Nguyễn Hoàng Thi', 100),
-          new albumDetail('4', '/image/13.jpg', 'Nguyễn Hoàng Thi', 100),
-          new albumDetail('5', '/image/13.jpg', 'Nguyễn Hoàng Thi', 100),
-          new albumDetail('6', '/image/13.jpg', 'Nguyễn Hoàng Thi', 100)];
-
-  res.render('album-detail', {picture: picture,
-                      albumName: albumName,
-                      albumShort: albumShort,
-                      active_albums: function () {
-                            return "active";
-                      }
-                      });
-});*/
-
 
 app.get('/albums/:albumid', function(req, res){
 
@@ -169,7 +149,7 @@ app.get('/albums/:albumid', function(req, res){
 
   client.connect();
 
-  var query = client.query('SELECT * FROM album, picture, users WHERE album.albumid = picture.albumid AND picture.uploader = users.userID AND picture.albumid = ' + req.params.albumid, function(err, result){
+  var query2 = client.query('SELECT * FROM album, picture, users WHERE album.albumid = picture.albumid AND picture.uploader = users.userID AND picture.albumid = ' + req.params.albumid, function(err, result){
         picture = result.rows;
         albumName = picture[0].title;
         albumShort = picture[0].acontent;
@@ -183,13 +163,29 @@ app.get('/albums/:albumid', function(req, res){
                       });
   });
 
-  
+});
+
+app.get('/albums/:albumid/:picid', function(req, res){
+
+  var client = new pg.Client(connectionString);
+
+  var result =[];
+
+  client.connect();
+
+
+  var query3 = client.query('UPDATE picture SET viewnumber = viewnumber + 1 WHERE picture.picid = $1', [req.params.picid], function(err, result){
+     res.render('photo', {pic: req.params.picid,
+                      active_albums: function () {
+                            return "active";
+                      }  });
+  });
+
+
+     
 });
 
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 })
-
-
-
