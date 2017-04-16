@@ -4,7 +4,7 @@
   "description": "A simple website",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/UDPT-2017/lab01-1412503-1412520#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "pg": "^6.1.5"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
