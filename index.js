@@ -55,7 +55,7 @@ app.get('/blog/:id', function(req, res){
   client.connect();
   var query = client.query('SELECT blogid, username, blogpic, viewnumber, bcontent FROM blog, users WHERE writer = userid', function(err, result){
     blogs = result.rows;
-    console.log(result.rows);
+    //console.log(result.rows);
     for(var i = 0; i<blogs.length; i++){
       if(blogs[i].blogid == req.params.id){
         blog = blogs[i];
