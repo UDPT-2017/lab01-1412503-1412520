@@ -2,9 +2,8 @@ var express = require('express');
 
 var app = express();
 var exphbs  = require('express-handlebars');
-// var active = function(home, album, about, blog){
-//   this.home=home,this.album=album, this.about=about,this.blog=blog
-// }
+var pg = require('pg');
+
 app.use(express.static('public'));
 app.use('/components', express.static('bower_components'));
 app.engine('hbs', exphbs({
@@ -17,40 +16,78 @@ app.set('view engine', 'hbs');
 
 app.get('/about', function (req, res) {
     res.render('about',{
-      title:"About",
+      tit:"About",
       active_about: function () { return "active"; }
     });
 });
 
+var comment =function(user, com){
+  this.user = user;
+  this.com = com;
+};
+
 app.get('/blog', function (req, res) {
-
-    var blog =function(name, avatar, views, noidung){
-      this.name = name;
-      this.avatar = avatar;
-      this.views = views;
-      this.noidung = noidung;
-    };
-    var blog_array=[
-    new blog("Thảo Lúa", "/users/u1.jpg",50,
-    "Buồn ơi là sầu huhu sao mà ngu thế này k biết nữa...."),
-    new blog("Thi Thi", "/users/u3.jpg",55,
-    "Trời buồn trời đổ cơn mưa ta buồn ta ngủ từ trưa tới chiều...."),
-    new blog("Thi Thi", "/users/u5.jpg",55,
-    "Trời buồn trời đổ cơn mưa ta buồn ta ngủ từ trưa tới chiều....")
-    ]
+  var connectionString = 'postgres://postgres:123456@localhost:5432/'+ 'abmanagement';
+  var  client = new pg.Client(connectionString);
+  var result = [];
+  var blogs = [];
+  client.connect();
+  var query = client.query('SELECT blogid, username, blogpic, viewnumber, bcontent FROM blog, users WHERE writer = userid', function(err, result){
+    blogs = result.rows;
+    console.log(result.rows);
     res.render('blog',{
-      title:"Blog",
-      blog:blog_array,
+      tit:"Blog",
+      blog:blogs,
       active_blog: function () { return "active"; }
     });
+  });
 });
 
-app.get('/blog-detail', function(req, res){
-    res.render('blog-detail',{
-      title:"blog1",
-      active_blog: function () { return "active"; }
+  var squel = require("squel");
+  var log = require("log");
+
+app.get('/blog/:id', function(req, res){
+  var blog;
+  var connectionString = 'postgres://postgres:123456@localhost:5432/'+ 'abmanagement';
+  var  client = new pg.Client(connectionString);
+  var result = [];
+  var result_cmt = [];
+  var blogs = [];
+  var comments = [];
+
+  client.connect();
+  var query = client.query('SELECT blogid, username, blogpic, viewnumber, bcontent FROM blog, users WHERE writer = userid', function(err, result){
+    blogs = result.rows;
+    console.log(result.rows);
+    for(var i = 0; i<blogs.length; i++){
+      if(blogs[i].blogid == req.params.id){
+        blog = blogs[i];
+        break;
+      }
+    }
+    var bid = blog.blogid;
+    // var q2 = squel.select()
+    //               .from("commentt", "users")
+    //               .fields("users.username", "commentt.cmt")
+    //               .where("commentt.blogid = 1")
+    //               .where("commentt.userid = users.userid");
+
+    var query2 = client.query('select username, cmt from users, commentt where commentt.userid = users.userid and commentt.blogid = 1', function(err, result_cmt){
+    // var query2 = client.query(q2, function(err, result_cmt){
+      comments = result_cmt.rows;
+      console.log(result_cmt.rows);
+      res.render('blog-detail',{
+        blog:blog,
+        comments: comments,
+        tit:"Blog" + blog.blogid,
+        active_blog: function () { return "active"; }
+      });
     });
-});
+    var query3 = client.query('update blog set viewnumber=viewnumber+1 where blog.blogid = 1', function(err, result){
+      console.log(result);
+      });
+    });
+  });
 
 /////////////////////////////////////////////////////////
 app.get('/', function (req, res) {
