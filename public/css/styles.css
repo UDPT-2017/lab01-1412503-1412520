@@ -10,6 +10,12 @@ white-space: nowrap;
 text-overflow: ellipsis;
 }
 
+h4 p{
+    overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+
 body{
   font-family: Times;
   position: relative;
@@ -195,7 +201,7 @@ div.gallery:hover {
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
+    display: block;
     position: fixed; /* Stay in place */
     z-index: 1001; /* Sit on top */
     padding-top: 100px; /* Location of the box */
