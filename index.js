@@ -27,7 +27,7 @@ var comment =function(user, com){
 };
 
 app.get('/blog', function (req, res) {
-  var connectionString = 'postgres://postgres:123456@localhost:5432/'+ 'abmanagement';
+  var connectionString = 'postgres://sqgoqpayfdjwse:0696722399c8af88231a082a8919279b024bf2fb8d178a377a94c2851915c181@ec2-54-225-182-108.compute-1.amazonaws.com:5432/d7qrkee4tglh9n:0696722399c8af88231a082a8919279b024bf2fb8d178a377a94c2851915c181@ec2-54-225-182-108.compute-1.amazonaws.com:5432/'+ 'd7qrkee4tglh9n';
   var  client = new pg.Client(connectionString);
   var result = [];
   var blogs = [];
